@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fractal trees</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.min.js"></script>
+</head>
+<body>
+    <script>
+        function setup() {
+            frameRate(1)
+            createCanvas(800, 600)
+        }
+
+        function draw() {
+            background('lightgray')
+            drawTree(width / 2, height, 0, 100)
+        }
+
+        function drawTree(x, y, angule, radio) {
+            if (radio < 1) {
+                return
+            }
+            if (radio < 5) { // es una hoja
+                stroke('darkgreen')
+            } else { // es una rama
+                stroke('black')
+            }
+            let x2 = x + radio * cos(angule - PI / 2)
+            let y2 = x + radio * sin(angule - PI / 2)
+            strokeWeight(radio / 10)
+            line(x, y, x2, y2)
+            for (let i = 0; i < 2; i++) {
+                drawTree(
+                    x2, 
+                    y2, 
+                    angule + random(-PI / 4, PI / 4), 
+                    radio * random(0.2, 1))
+            }
+        }
+    </script>
+</body>
+</html>
