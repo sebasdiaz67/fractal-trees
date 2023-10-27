@@ -27,10 +27,10 @@
                 stroke('black')
             }
             let x2 = x + radio * cos(angule - PI / 2)
-            let y2 = x + radio * sin(angule - PI / 2)
+            let y2 = y + radio * sin(angule - PI / 2)
             strokeWeight(radio / 10)
             line(x, y, x2, y2)
-            for (let i = 0; i < 2; i++) {
+            for (let i = 0; i < 3; i++) {
                 drawTree(
                     x2, 
                     y2, 
